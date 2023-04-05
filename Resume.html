@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Resume</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #333;
+      background: linear-gradient(135deg, #83a4d4, #b6fbff);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .main {
+      display: flex;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .tabs {
+      position: sticky;
+      top: 4rem;
+      width: 20%;
+      height: calc(100vh - 4rem);
+      background-color: rgba(241, 241, 241, 0.9);
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .tabs li {
+      margin-bottom: 1.5rem;
+    }
+
+    .tabs i {
+      margin-right: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .tab-link {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: #000;
+      transition: background-color 0.2s, color 0.2s;
+      border-radius: 20px;
+    }
+
+    .tab-link:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-link:hover i {
+      transform: translateX(5px);
+    }
+
+    .tab-link.active {
+      color: white;
+      background-color: #333;
+    }
+
+    .content {
+      width: 80%;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      padding-right: 1rem;
+    }
+
+    .section {
+      padding: 3rem 5rem;
+      scroll-margin-top: 4rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #333;
+    }
+
+    .fade-in {
+        animation: fadeIn 1s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function setActiveTab() {
+            const scrollPos = $(document).scrollTop();
+            $('.tab-link').each(function () {
+                const section = $(this).attr('href');
+                const sectionTop = $(section).offset().top - 5;
+
+                if (scrollPos >= sectionTop) {
+                    $('.tab-link').removeClass('active');
+                    $(this).addClass('active');
+                }
+            });
+        }
+
+        setActiveTab();
+
+        $(document).scroll(function () {
+            setActiveTab();
+        });
+
+        $('.tab-link').click(function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 500);
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="header">
+        <h1>Your Name</h1>
+    </div>
+    <div class="main">
+        <nav class="tabs">
+            <ul>
+                <li><a href="#summary" class="tab-link active fade-in"><i class="fas fa-user"></i>Professional Summary</a></li>
+                <li><a href="#experience" class="tab-link fade-in"><i class="fas fa-briefcase"></i>Experience</a></li>
+                <li><a href="#skills" class="tab-link fade-in"><i class="fas fa-cogs"></i>Skills</a></li>
+                <li><a href="#education" class="tab-link fade-in"><i class="fas fa-graduation-cap"></i>Education</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <!-- Add your sections here -->
+        </div>
+    </div>
+</body>
+</html>
